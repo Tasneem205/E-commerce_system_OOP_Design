@@ -23,6 +23,10 @@ public class Cheese extends Product implements Expirable, Shippable {
     @Override
     public Double calculateShippingFee() {
         // add any business logic
-        return weight * shippingFee;
+        return (weight/1000.0) * shippingFee;
+    }
+
+    public Double getWeight() {
+        return weight;
     }
 }

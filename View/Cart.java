@@ -1,7 +1,6 @@
 package View;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Cart {
     private ArrayList<CartItem> cartList;
@@ -35,6 +34,10 @@ public class Cart {
             }
         }
         return this.cartList;
+    }
+
+    public ArrayList<CartItem> getCart() {
+        return cartList;
     }
 
     public Double getTotal() {

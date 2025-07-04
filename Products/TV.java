@@ -16,6 +16,11 @@ public class TV extends Product implements Shippable {
 
     public Double calculateShippingFee() {
         // add any business logic
-        return weight * shippingFee;
+        return (weight/1000.0) * shippingFee;
+    }
+
+    @Override
+    public Double getWeight() {
+        return weight;
     }
 }
