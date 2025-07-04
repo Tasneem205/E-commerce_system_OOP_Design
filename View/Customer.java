@@ -20,6 +20,11 @@ public class Customer {
     public Double getBalance() {
         return this.balance;
     }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
     public void checkout() {
         if (cart.getCart().isEmpty()) {
             System.out.println("WARNING: Can't checkout\t cart is empty\n");
@@ -47,6 +52,11 @@ public class Customer {
             }
         }
         totalWeight /= 1000;
+        if (this.getBalance() < (shippingFee + subtotal)) {
+            System.out.println("ERROR: Balance unable to cover cost");
+            return;
+        }
+        this.setBalance(this.getBalance()-(shippingFee + subtotal));
         System.out.println("Total package weight " + totalWeight + "kg");
         // send shippable to shipping service
         // TODO: implement shipping service
@@ -60,6 +70,7 @@ public class Customer {
         System.out.println("Subtotal\t" + subtotal);
         System.out.println("Shipping\t" + shippingFee);
         System.out.println("Amount\t" + shippingFee + subtotal);
+        System.out.println("Current Balance " + this.getBalance());
     }
 
     public void addToCart(Product prod, Integer quantity) {
