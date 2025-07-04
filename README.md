@@ -4,4 +4,4 @@ E-commerce system design as Fawry internship assessment question
   
 ## Class Diagram
 
-!(fawry-question.png)
+<img src="fawry-question.png" alt="Fawry E-commerce Class Diagram"/>
