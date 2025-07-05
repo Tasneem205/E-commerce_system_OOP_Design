@@ -4,18 +4,22 @@ import java.util.ArrayList;
 
 public class Cart {
     private ArrayList<CartItem> cartList;
-    Cart() {
+    public Cart() {
         this.cartList = new ArrayList<>();
     }
 
     public ArrayList<CartItem> addItem(CartItem newItem) {
-        for (CartItem i : this.cartList) {
-            if (i.prod.getName().equals(newItem.prod.getName())) {
-                i.setQuantity(i.getQuantity() + newItem.getQuantity());
-                return this.cartList;
+        if (newItem.getQuantity() <= newItem.prod.getQuantity()) {
+            for (CartItem i : this.cartList) {
+                if (i.prod.getName().equals(newItem.prod.getName())) {
+                    i.setQuantity(i.getQuantity() + newItem.getQuantity());
+                    return this.cartList;
+                }
             }
+            cartList.add(newItem);
+        } else {
+            System.out.println("Item can't be added to cart (quantity shortage)");
         }
-        cartList.add(newItem);
         return this.cartList;
     }
 

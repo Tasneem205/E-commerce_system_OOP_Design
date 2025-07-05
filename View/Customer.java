@@ -10,8 +10,8 @@ import java.util.List;
 public class Customer {
     private String name;
     private Double balance;
-    private Cart cart;
-    Customer(String name, Double balance) {
+    public Cart cart;
+    public Customer(String name, Double balance) {
         this.name = name;
         this.balance = balance;
         this.cart = new Cart();
@@ -73,7 +73,7 @@ public class Customer {
         System.out.println("---------------------------------------------");
         System.out.println("Subtotal\t" + subtotal);
         System.out.println("Shipping\t" + shippingFee);
-        System.out.println("Amount\t" + shippingFee + subtotal);
+        System.out.println("Amount\t" + (shippingFee + subtotal));
         System.out.println("Current Balance " + this.getBalance());
     }
 

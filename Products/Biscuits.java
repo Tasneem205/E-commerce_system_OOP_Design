@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Biscuits extends Product implements Expirable {
     private final LocalDate expiryDate;
 
-    Biscuits(String name, Double price, Integer quantity, LocalDate expire) {
+    public Biscuits(String name, Double price, Integer quantity, LocalDate expire) {
         super(name, price, quantity);
         this.expiryDate = expire;
     }
