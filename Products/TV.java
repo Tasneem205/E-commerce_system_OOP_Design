@@ -23,4 +23,7 @@ public class TV extends Product implements Shippable {
     public Double getWeight() {
         return weight;
     }
+    public String getName() {
+        return super.getName();
+    }
 }

@@ -29,4 +29,7 @@ public class Cheese extends Product implements Expirable, Shippable {
     public Double getWeight() {
         return weight;
     }
+    public String getName() {
+        return super.getName();
+    }
 }

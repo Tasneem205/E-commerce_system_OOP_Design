@@ -33,7 +33,7 @@ public class Customer {
         double subtotal = 0.0;
         double shippingFee = 0.0;
         double totalWeight = 0.0;
-        List<Shippable> shippable = new ArrayList<>();
+        ArrayList<Shippable> shippable = new ArrayList<>();
         System.out.println("** Shipment notice **");
         for (CartItem i : cart.getCart()) {
             if (i.prod instanceof Expirable exp) {
@@ -47,7 +47,7 @@ public class Customer {
             if (i.prod instanceof Shippable s) {
                 shippable.add(s);
                 shippingFee += s.calculateShippingFee();
-                totalWeight += s.getWeight();
+                totalWeight += (s.getWeight() * i.getQuantity());
                 System.out.println(i.getQuantity() + "x " + i.prod.getName() + "\t" + s.getWeight() + "g\n");
             }
         }
@@ -58,8 +58,12 @@ public class Customer {
         }
         this.setBalance(this.getBalance()-(shippingFee + subtotal));
         System.out.println("Total package weight " + totalWeight + "kg");
+
         // send shippable to shipping service
-        // TODO: implement shipping service
+        System.out.println("Sending shipping information to the shipping service");
+        ShippingService service = new ShippingService(shippable);
+        service.applyForShipping();
+
         // loop for all items again
         for (CartItem i : cart.getCart()) {
             // all products are valid
